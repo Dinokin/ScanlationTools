@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Dinokin.ScanlationTools.Rippers;
-using ImageMagick;
+using Dinokin.ScanlationTools.Tools;
 
 namespace Dinokin.ScanlationTools
 {
@@ -11,8 +11,6 @@ namespace Dinokin.ScanlationTools
     {
         public static async Task Main(string[] args)
         {
-            var a = await new EBookJapan().GetImages(new Uri("https://ebookjapan.yahoo.co.jp/books/191412/A002201450/"), TimeSpan.FromSeconds(2));
-            /*
             if (args.Length > 0)
                 switch (args[0])
                 {
@@ -20,19 +18,79 @@ namespace Dinokin.ScanlationTools
                         if (args.Length == 4)
                         {
                             var images = await new Alphapolis().GetImages(new Uri(args[1]));
-                            ImageSaver.SaveImages(images, ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
+                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         }
                         else
-                            Console.WriteLine("One or more arguments are missing. Use argument \"help\" for usage details.");
+                        {
+                            Console.WriteLine(
+                                "One or more arguments are missing. Use argument \"help\" for usage details.");
+                        }
+
                         break;
                     case "comicride":
                         if (args.Length == 4)
                         {
                             var images = await new ComicRider().GetImages(new Uri(args[1]));
-                            ImageSaver.SaveImages(images, ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
+                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         }
                         else
-                            Console.WriteLine("One or more arguments are missing. Use argument \"help\" for usage details.");
+                        {
+                            Console.WriteLine(
+                                "One or more arguments are missing. Use argument \"help\" for usage details.");
+                        }
+
+                        break;
+                    case "webace":
+                        if (args.Length == 4)
+                        {
+                            var images = await new WebAce().GetImages(new Uri(args[1]));
+                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
+                        }
+                        else
+                        {
+                            Console.WriteLine(
+                                "One or more arguments are missing. Use argument \"help\" for usage details.");
+                        }
+
+                        break;
+                    case "webtoonjoiner":
+                        if (args.Length == 5)
+                        {
+                            var images = await WebtoonJoiner.Join(new DirectoryInfo(args[1]), ushort.Parse(args[3]));
+                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[4]), Directory.CreateDirectory(args[2]));
+                        }
+                        else
+                        {
+                            Console.WriteLine(
+                                "One or more arguments are missing. Use argument \"help\" for usage details.");
+                        }
+
+                        break;
+                    case "resizepercent":
+                        if (args.Length == 5)
+                        {
+                            var images = await Resizer.Percent(new DirectoryInfo(args[1]), double.Parse(args[3]));
+                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[4]), Directory.CreateDirectory(args[2]));
+                        }
+                        else
+                        {
+                            Console.WriteLine(
+                                "One or more arguments are missing. Use argument \"help\" for usage details.");
+                        }
+
+                        break;
+                    case "removetransparent":
+                        if (args.Length == 4)
+                        {
+                            var images = await BorderRemover.RemoveTransparentBorders(new DirectoryInfo(args[1]));
+                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
+                        }
+                        else
+                        {
+                            Console.WriteLine(
+                                "One or more arguments are missing. Use argument \"help\" for usage details.");
+                        }
+
                         break;
                     case "help":
                         Console.Write(GetHelp());
@@ -43,13 +101,12 @@ namespace Dinokin.ScanlationTools
                 }
             else
                 Console.WriteLine("No argument found. Use argument \"help\" for usage details.");
-                */
         }
 
         private static string GetHelp()
         {
             var sb = new StringBuilder();
-            
+
             sb.AppendLine("Usage Information");
             sb.AppendLine();
             sb.AppendLine("Usage: ScanlationTools <module> <options>");
@@ -66,23 +123,24 @@ namespace Dinokin.ScanlationTools
             sb.AppendLine("Module: ComicRider");
             sb.AppendLine("Description: Module can rip images from sites like comicride.jp, comic-meteor.jp and comic-polaris.jp.");
             sb.AppendLine("Usage: ScanlationTools comicrider <chapterurl> <outputdir> <fileformat>");
-            
-            return sb.ToString();
-        }
+            sb.AppendLine();
+            sb.AppendLine("Module: WebAce");
+            sb.AppendLine("Description: Module dedicated to rip manga pages from web-ace.jp.");
+            sb.AppendLine("Usage: ScanlationTools webace <chapterurl> <outputdir> <fileformat>");
+            sb.AppendLine();
+            sb.AppendLine("Module: Webtoon Joiner");
+            sb.AppendLine("Description: Join webtoon pages vertically.");
+            sb.AppendLine("Usage: ScanlationTools webtoonjoiner <origindir> <outputdir> <imagesperpage> <fileformat>");
+            sb.AppendLine();
+            sb.AppendLine("Module: Resizer");
+            sb.AppendLine("Description: Resize images by the specified percent.");
+            sb.AppendLine("Usage: ScanlationTools resizepercent <origindir> <outputdir> <percent> <fileformat>");
+            sb.AppendLine();
+            sb.AppendLine("Module: Border Remover");
+            sb.AppendLine("Description: Remove transparent borders from images.");
+            sb.AppendLine("Usage: ScanlationTools removetransparent <origindir> <outputdir> <fileformat>");
 
-        private static MagickFormat ParseFormat(string format)
-        {
-            switch (format)
-            {
-                case "jpg":
-                    return MagickFormat.Jpg;
-                case "png":
-                    return MagickFormat.Png8;
-                case "psd":
-                    return MagickFormat.Psd;
-                default:
-                    return MagickFormat.Unknown;
-            }
+            return sb.ToString();
         }
     }
 }

@@ -11,27 +11,5 @@
       <PackageReference Include="HtmlAgilityPack" Version="1.11.12" />
       <PackageReference Include="Magick.NET-Q8-x64" Version="7.14.1" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-      <PackageReference Include="Selenium.Support" Version="3.141.0" />
-      <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="Drivers\linux64\geckodriver" Condition="'$(RuntimeIdentifier)'=='linux-x64'">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-          <Link>geckodriver</Link>
-      </Content>
-      <Content Include="Drivers\macos\geckodriver" Condition="'$(RuntimeIdentifier)'=='osx-x64'">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-          <Link>geckodriver</Link>
-      </Content>
-      <Content Include="Drivers\win64\geckodriver.exe" Condition="'$(RuntimeIdentifier)'=='win-x64'">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-          <Link>geckodriver.exe</Link>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Drivers\linux64\geckodriver" />
-      <EmbeddedResource Include="Drivers\linux64\geckodriver" />
     </ItemGroup>
 </Project>
