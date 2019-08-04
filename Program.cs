@@ -21,10 +21,8 @@ namespace Dinokin.ScanlationTools
                             await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         }
                         else
-                        {
                             Console.WriteLine(
                                 "One or more arguments are missing. Use argument \"help\" for usage details.");
-                        }
 
                         break;
                     case "comicride":
@@ -34,10 +32,8 @@ namespace Dinokin.ScanlationTools
                             await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         }
                         else
-                        {
                             Console.WriteLine(
                                 "One or more arguments are missing. Use argument \"help\" for usage details.");
-                        }
 
                         break;
                     case "webace":
@@ -47,10 +43,8 @@ namespace Dinokin.ScanlationTools
                             await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         }
                         else
-                        {
                             Console.WriteLine(
                                 "One or more arguments are missing. Use argument \"help\" for usage details.");
-                        }
 
                         break;
                     case "webtoonjoiner":
@@ -60,10 +54,8 @@ namespace Dinokin.ScanlationTools
                             await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[4]), Directory.CreateDirectory(args[2]));
                         }
                         else
-                        {
                             Console.WriteLine(
                                 "One or more arguments are missing. Use argument \"help\" for usage details.");
-                        }
 
                         break;
                     case "resizepercent":
@@ -73,10 +65,8 @@ namespace Dinokin.ScanlationTools
                             await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[4]), Directory.CreateDirectory(args[2]));
                         }
                         else
-                        {
                             Console.WriteLine(
                                 "One or more arguments are missing. Use argument \"help\" for usage details.");
-                        }
 
                         break;
                     case "removetransparent":
@@ -86,10 +76,8 @@ namespace Dinokin.ScanlationTools
                             await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         }
                         else
-                        {
                             Console.WriteLine(
                                 "One or more arguments are missing. Use argument \"help\" for usage details.");
-                        }
 
                         break;
                     case "help":
@@ -106,7 +94,7 @@ namespace Dinokin.ScanlationTools
         private static string GetHelp()
         {
             var sb = new StringBuilder();
-
+            
             sb.AppendLine("Usage Information");
             sb.AppendLine();
             sb.AppendLine("Usage: ScanlationTools <module> <options>");
@@ -139,7 +127,7 @@ namespace Dinokin.ScanlationTools
             sb.AppendLine("Module: Border Remover");
             sb.AppendLine("Description: Remove transparent borders from images.");
             sb.AppendLine("Usage: ScanlationTools removetransparent <origindir> <outputdir> <fileformat>");
-
+            
             return sb.ToString();
         }
     }

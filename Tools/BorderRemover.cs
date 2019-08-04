@@ -7,9 +7,8 @@ namespace Dinokin.ScanlationTools.Tools
 {
     public static class BorderRemover
     {
-        public static async Task<MagickImage[]> RemoveTransparentBorders(DirectoryInfo origin)
-        {
-            return await Task.WhenAll(origin.GetFiles().Where(file => ImageSaver.ParseFormat(file.Extension) != ImageSaver.SupportedFormats.Unknown)
+        public static async Task<MagickImage[]> RemoveTransparentBorders(DirectoryInfo origin) =>
+            await Task.WhenAll(origin.GetFiles().Where(file => ImageSaver.ParseFormat(file.Extension) != ImageSaver.SupportedFormats.Unknown)
                 .Select(file => new MagickImage(file)).Select(image => Task.Run(async () =>
                 {
                     if (image.HasAlpha)
@@ -23,9 +22,13 @@ namespace Dinokin.ScanlationTools.Tools
 
 
                         foreach (var pixel in pixels)
+                        {
                             if (pixel.GetChannel(3) != 255)
+                            {
                                 for (var i = 0; i < pixel.Channels; i++)
                                     pixel.SetChannel(i, 0);
+                            }
+                        }
 
                         tasks[0] = Task.Run(() =>
                         {
@@ -64,6 +67,5 @@ namespace Dinokin.ScanlationTools.Tools
 
                     return image;
                 })));
-        }
     }
 }

@@ -43,9 +43,7 @@ namespace Dinokin.ScanlationTools.Tools
                 }
             }
 
-            await Task.WhenAll(finishedPages);
-
-            return finishedPages.Select(result => result.Result).ToArray();
+            return await Task.WhenAll(finishedPages);
         }
     }
 }

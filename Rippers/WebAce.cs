@@ -11,10 +11,8 @@ namespace Dinokin.ScanlationTools.Rippers
     {
         private readonly HttpClient _httpClient = new HttpClient();
 
-        public async Task<MagickImage[]> GetImages(Uri uri)
-        {
-            return await Task.WhenAll(JsonConvert.DeserializeObject<string[]>(await _httpClient.GetStringAsync($"{uri.AbsoluteUri}/json/"))
+        public async Task<MagickImage[]> GetImages(Uri uri) =>
+            await Task.WhenAll(JsonConvert.DeserializeObject<string[]>(await _httpClient.GetStringAsync($"{uri.AbsoluteUri}/json/"))
                 .Select(image => Task.Run(async () => new MagickImage(await _httpClient.GetByteArrayAsync($"https://web-ace.jp{image}")))));
-        }
     }
 }

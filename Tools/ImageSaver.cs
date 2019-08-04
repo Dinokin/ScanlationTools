@@ -16,8 +16,7 @@ namespace Dinokin.ScanlationTools.Tools
             Unknown
         }
 
-        public static async Task SaveImages(MagickImage[] images, SupportedFormats format, DirectoryInfo location)
-        {
+        public static async Task SaveImages(MagickImage[] images, SupportedFormats format, DirectoryInfo location) =>
             await Task.WhenAll(images.Select((image, iterator) => iterator).Select(iterator => Task.Run(() =>
             {
                 string fileName;
@@ -54,7 +53,6 @@ namespace Dinokin.ScanlationTools.Tools
 
                 images[iterator].Write($"{location.FullName}{Path.DirectorySeparatorChar}{fileName}", finalFormat);
             })));
-        }
 
         public static SupportedFormats ParseFormat(string format)
         {

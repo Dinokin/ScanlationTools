@@ -12,28 +12,6 @@ namespace Dinokin.ScanlationTools.Rippers
 {
     public class ComicRider
     {
-        private readonly HttpClient _httpClient = new HttpClient();
-
-        public async Task<MagickImage[]> GetImages(Uri uri)
-        {
-            return await Task.WhenAll((await new HtmlWeb().LoadFromWebAsync(uri.AbsoluteUri)).DocumentNode.Descendants("div").Where(element => element.Attributes.Contains("data-ptimg"))
-                .Select(attribute => attribute.GetAttributeValue("data-ptimg", string.Empty)).Select(value => Task.Run(async () =>
-                {
-                    var imageRecipe = JsonConvert.DeserializeObject<ImageRecipe>(await _httpClient.GetStringAsync($"{uri.AbsoluteUri}{value}"));
-                    var image = new MagickImage(await _httpClient.GetByteArrayAsync($"{uri.AbsoluteUri}data/{imageRecipe.Resources.Image.Source}"));
-                    var rebuiltImage = new MagickImage(MagickColors.White, imageRecipe.Views[0].Width, imageRecipe.Views[0].Height);
-
-                    foreach (var coordinateSet in imageRecipe.Views[0].Coordinates)
-                    {
-                        var block = new BlockCoordinates(coordinateSet);
-
-                        rebuiltImage.Composite(image.Clone(block.StartX, block.StartY, block.CropSizeX, block.CropSizeY), block.DestinationX, block.DestinationY);
-                    }
-
-                    return rebuiltImage;
-                })));
-        }
-
         private struct BlockCoordinates
         {
             public int StartX { get; }
@@ -90,5 +68,26 @@ namespace Dinokin.ScanlationTools.Rippers
                 [JsonProperty("coords")] public List<string> Coordinates { get; set; }
             }
         }
+
+        private readonly HttpClient _httpClient = new HttpClient();
+
+        public async Task<MagickImage[]> GetImages(Uri uri) =>
+            await Task.WhenAll((await new HtmlWeb().LoadFromWebAsync(uri.AbsoluteUri))
+                .DocumentNode.Descendants("div").Where(element => element.Attributes.Contains("data-ptimg"))
+                .Select(attribute => attribute.GetAttributeValue("data-ptimg", string.Empty)).Select(value => Task.Run(async () =>
+                {
+                    var imageRecipe = JsonConvert.DeserializeObject<ImageRecipe>(await _httpClient.GetStringAsync($"{uri.AbsoluteUri}{value}"));
+                    var image = new MagickImage(await _httpClient.GetByteArrayAsync($"{uri.AbsoluteUri}data/{imageRecipe.Resources.Image.Source}"));
+                    var rebuiltImage = new MagickImage(MagickColors.White, imageRecipe.Views[0].Width, imageRecipe.Views[0].Height);
+
+                    foreach (var coordinateSet in imageRecipe.Views[0].Coordinates)
+                    {
+                        var block = new BlockCoordinates(coordinateSet);
+
+                        rebuiltImage.Composite(image.Clone(block.StartX, block.StartY, block.CropSizeX, block.CropSizeY), block.DestinationX, block.DestinationY);
+                    }
+
+                    return rebuiltImage;
+                })));
     }
 }
