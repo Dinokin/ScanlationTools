@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ImageMagick;
@@ -8,19 +7,18 @@ namespace Dinokin.ScanlationTools.Tools
 {
     public static class WebtoonJoiner
     {
-        public static async Task<MagickImage[]> Join(DirectoryInfo origin, ushort imagesPerPage)
+        public static async Task<IList<MagickImage>> Join(IList<MagickImage> images, ushort imagesPerPage)
         {
-            var images = origin.GetFiles().Where(file => ImageSaver.ParseFormat(file.Extension) != ImageSaver.SupportedFormats.Unknown).Select(file => new MagickImage(file)).ToArray();
-            var page = new List<MagickImage>();
+            var pageGroup = new List<MagickImage>();
             var finishedPages = new List<Task<MagickImage>>();
 
-            for (var i = 1; i <= images.Length; i++)
+            for (var i = 1; i <= images.Count; i++)
             {
-                page.Add(images[i - 1]);
+                pageGroup.Add(images[i - 1]);
 
-                if (i % imagesPerPage == 0 || i == images.Length)
+                if (i % imagesPerPage == 0 || i == images.Count)
                 {
-                    var pageCopy = page.ToArray();
+                    var pageCopy = pageGroup.ToList();
 
                     finishedPages.Add(Task.Run(() =>
                     {
@@ -39,7 +37,7 @@ namespace Dinokin.ScanlationTools.Tools
                         return finalImage;
                     }));
 
-                    page.Clear();
+                    pageGroup.Clear();
                 }
             }
 

@@ -71,7 +71,7 @@ namespace Dinokin.ScanlationTools.Rippers
 
         private readonly HttpClient _httpClient = new HttpClient();
 
-        public async Task<MagickImage[]> GetImages(Uri uri) =>
+        public async Task<IList<MagickImage>> GetImages(Uri uri) =>
             await Task.WhenAll((await new HtmlWeb().LoadFromWebAsync(uri.AbsoluteUri))
                 .DocumentNode.Descendants("div").Where(element => element.Attributes.Contains("data-ptimg"))
                 .Select(attribute => attribute.GetAttributeValue("data-ptimg", string.Empty)).Select(value => Task.Run(async () =>
