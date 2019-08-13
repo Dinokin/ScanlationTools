@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +7,7 @@ using ImageMagick;
 
 namespace Dinokin.ScanlationTools.Tools
 {
-    public static class ImageSaver
+    public static class ImageDealer
     {
         public enum SupportedFormats
         {
@@ -16,7 +17,11 @@ namespace Dinokin.ScanlationTools.Tools
             Unknown
         }
 
-        public static async Task SaveImages(MagickImage[] images, SupportedFormats format, DirectoryInfo location) =>
+        public static async Task<IList<MagickImage>> FetchImages(DirectoryInfo origin) => 
+            await Task.WhenAll(origin.GetFiles().Where(file => ParseFormat(file.Extension) != SupportedFormats.Unknown)
+                .Select(file => Task.Run(() => new MagickImage(file))));
+        
+        public static async Task SaveImages(IList<MagickImage> images, SupportedFormats format, DirectoryInfo location) =>
             await Task.WhenAll(images.Select((image, iterator) => iterator).Select(iterator => Task.Run(() =>
             {
                 string fileName;
