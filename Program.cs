@@ -16,10 +16,7 @@ namespace Dinokin.ScanlationTools
                 {
                     case "alphapolis":
                         if (args.Length == 4)
-                        {
-                            var images = await new Alphapolis().GetImages(new Uri(args[1]));
-                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
-                        }
+                            await ImageDealer.SaveImages(await new Alphapolis().GetImages(new Uri(args[1])), ImageDealer.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         else
                             Console.WriteLine(
                                 "One or more arguments are missing. Use argument \"help\" for usage details.");
@@ -28,8 +25,7 @@ namespace Dinokin.ScanlationTools
                     case "comicride":
                         if (args.Length == 4)
                         {
-                            var images = await new ComicRider().GetImages(new Uri(args[1]));
-                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
+                            await ImageDealer.SaveImages(await new ComicRider().GetImages(new Uri(args[1])), ImageDealer.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         }
                         else
                             Console.WriteLine(
@@ -38,10 +34,7 @@ namespace Dinokin.ScanlationTools
                         break;
                     case "webace":
                         if (args.Length == 4)
-                        {
-                            var images = await new WebAce().GetImages(new Uri(args[1]));
-                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
-                        }
+                            await ImageDealer.SaveImages(await new WebAce().GetImages(new Uri(args[1])), ImageDealer.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         else
                             Console.WriteLine(
                                 "One or more arguments are missing. Use argument \"help\" for usage details.");
@@ -50,8 +43,8 @@ namespace Dinokin.ScanlationTools
                     case "webtoonjoiner":
                         if (args.Length == 5)
                         {
-                            var images = await WebtoonJoiner.Join(new DirectoryInfo(args[1]), ushort.Parse(args[3]));
-                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[4]), Directory.CreateDirectory(args[2]));
+                            var images = await WebtoonJoiner.Join(await ImageDealer.FetchImages(new DirectoryInfo(args[1])), ushort.Parse(args[3]));
+                            await ImageDealer.SaveImages(images, ImageDealer.ParseFormat(args[4]), Directory.CreateDirectory(args[2]));
                         }
                         else
                             Console.WriteLine(
@@ -61,8 +54,8 @@ namespace Dinokin.ScanlationTools
                     case "resizepercent":
                         if (args.Length == 5)
                         {
-                            var images = await Resizer.Percent(new DirectoryInfo(args[1]), double.Parse(args[3]));
-                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[4]), Directory.CreateDirectory(args[2]));
+                            var images = await Resizer.Percent(await ImageDealer.FetchImages(new DirectoryInfo(args[1])), double.Parse(args[3]));
+                            await ImageDealer.SaveImages(images, ImageDealer.ParseFormat(args[4]), Directory.CreateDirectory(args[2]));
                         }
                         else
                             Console.WriteLine(
@@ -72,9 +65,17 @@ namespace Dinokin.ScanlationTools
                     case "removetransparent":
                         if (args.Length == 4)
                         {
-                            var images = await BorderRemover.RemoveTransparentBorders(new DirectoryInfo(args[1]));
-                            await ImageSaver.SaveImages(images, ImageSaver.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
+                            var images = await BorderRemover.RemoveTransparentBorders(await ImageDealer.FetchImages(new DirectoryInfo(args[1])));
+                            await ImageDealer.SaveImages(images, ImageDealer.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         }
+                        else
+                            Console.WriteLine(
+                                "One or more arguments are missing. Use argument \"help\" for usage details.");
+
+                        break;
+                    case "convert":
+                        if (args.Length == 4)
+                            await ImageDealer.SaveImages(await ImageDealer.FetchImages(new DirectoryInfo(args[1])), ImageDealer.ParseFormat(args[3]), Directory.CreateDirectory(args[2]));
                         else
                             Console.WriteLine(
                                 "One or more arguments are missing. Use argument \"help\" for usage details.");
@@ -94,7 +95,7 @@ namespace Dinokin.ScanlationTools
         private static string GetHelp()
         {
             var sb = new StringBuilder();
-            
+
             sb.AppendLine("Usage Information");
             sb.AppendLine();
             sb.AppendLine("Usage: ScanlationTools <module> <options>");
@@ -127,7 +128,11 @@ namespace Dinokin.ScanlationTools
             sb.AppendLine("Module: Border Remover");
             sb.AppendLine("Description: Remove transparent borders from images.");
             sb.AppendLine("Usage: ScanlationTools removetransparent <origindir> <outputdir> <fileformat>");
-            
+            sb.AppendLine();
+            sb.AppendLine("Module: Convert");
+            sb.AppendLine("Description: Convert images from one of the supported formats to another supported format.");
+            sb.AppendLine("Usage: ScanlationTools convert <origindir> <outputdir> <fileformat>");
+
             return sb.ToString();
         }
     }
