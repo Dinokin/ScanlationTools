@@ -3,21 +3,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using ImageMagick;
 
-namespace Dinokin.ScanlationTools.Tools
+namespace Dinokin.ScanlationTools.Functions
 {
     public static class BorderRemover
     {
-        public static async Task<IList<MagickImage>> RemoveTransparentBorders(IList<MagickImage> images) =>
+        public static async Task<IEnumerable<MagickImage>> RemoveTransparentBorders(IEnumerable<MagickImage> images) =>
             await Task.WhenAll(images.Select(image => Task.Run(async () =>
             {
                 if (image.HasAlpha)
                 {
                     var tasks = new Task[2];
                     var pixels = image.GetPixels();
-                    Pixel firstPixelX = null;
-                    Pixel lastPixelX = null;
-                    Pixel firstPixelY = null;
-                    Pixel lastPixelY = null;
+                    Pixel? firstPixelX = null;
+                    Pixel? lastPixelX = null;
+                    Pixel? firstPixelY = null;
+                    Pixel? lastPixelY = null;
 
 
                     foreach (var pixel in pixels)

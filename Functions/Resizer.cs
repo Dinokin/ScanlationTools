@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using ImageMagick;
 
-namespace Dinokin.ScanlationTools.Tools
+namespace Dinokin.ScanlationTools.Functions
 {
     public static class Resizer
     {
-        public static async Task<IList<MagickImage>> Percent(IList<MagickImage> images, double percent) =>
+        public static async Task<IEnumerable<MagickImage>> Percent(IEnumerable<MagickImage> images, double percent) =>
             await Task.WhenAll(images.Select(image => Task.Run(() =>
             {
                 image.Resize(new Percentage(percent));

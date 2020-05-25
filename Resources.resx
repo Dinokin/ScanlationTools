@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="BusyPleaseAwait">
+        <value>Busy. Please await.</value>
+    </data>
+    <data name="Error">
+        <value>Error!</value>
+    </data>
+    <data name="PleaseSelectFunction">
+        <value>Please select a function.</value>
+    </data>
+    <data name="PleaseSelectOutputFormat">
+        <value>Please select an output format.</value>
+    </data>
+    <data name="PleaseSelectOutputPath">
+        <value>Please select an output path.</value>
+    </data>
+    <data name="NoSupportedImageFormatFound">
+        <value>No file with a supported image format were found.</value>
+    </data>
+    <data name="TaskCompletedSuccessfully">
+        <value>Task completed successfully.</value>
+    </data>
+    <data name="Success">
+        <value>Success!</value>
+    </data>
+    <data name="Functions">
+        <value>Functions</value>
+    </data>
+    <data name="Convert">
+        <value>Convert</value>
+    </data>
+    <data name="ResizeByPercentage">
+        <value>Resize by Percentage</value>
+    </data>
+    <data name="TransparentBorderRemover">
+        <value>Transparent Border Remover</value>
+    </data>
+    <data name="WebtoonPageJoiner">
+        <value>Webtoon Page Joiner</value>
+    </data>
+    <data name="PleaseWait">
+        <value>Please Wait...</value>
+    </data>
+    <data name="DropFilesHere">
+        <value>Drop files here...</value>
+    </data>
+    <data name="Rippers">
+        <value>Rippers</value>
+    </data>
+    <data name="Alphapolis">
+        <value>Alphapolis</value>
+    </data>
+    <data name="ComicRIDE">
+        <value>ComicRIDE</value>
+    </data>
+    <data name="WebAce">
+        <value>Web Ace</value>
+    </data>
+    <data name="Output">
+        <value>Output</value>
+    </data>
+    <data name="PNG">
+        <value>PNG</value>
+    </data>
+    <data name="JPG">
+        <value>JPG</value>
+    </data>
+    <data name="PSD">
+        <value>PSD</value>
+    </data>
+</root>

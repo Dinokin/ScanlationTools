@@ -10,9 +10,9 @@ using Newtonsoft.Json;
 
 namespace Dinokin.ScanlationTools.Rippers
 {
-    public class ComicRider
+    public class ComicRide
     {
-        private struct BlockCoordinates
+        private readonly struct BlockCoordinates
         {
             public int StartX { get; }
             public int StartY { get; }
@@ -80,12 +80,8 @@ namespace Dinokin.ScanlationTools.Rippers
                     var image = new MagickImage(await _httpClient.GetByteArrayAsync($"{uri.AbsoluteUri}data/{imageRecipe.Resources.Image.Source}"));
                     var rebuiltImage = new MagickImage(MagickColors.White, imageRecipe.Views[0].Width, imageRecipe.Views[0].Height);
 
-                    foreach (var coordinateSet in imageRecipe.Views[0].Coordinates)
-                    {
-                        var block = new BlockCoordinates(coordinateSet);
-
+                    foreach (var block in imageRecipe.Views[0].Coordinates.Select(coordinateSet => new BlockCoordinates(coordinateSet)))
                         rebuiltImage.Composite(image.Clone(block.StartX, block.StartY, block.CropSizeX, block.CropSizeY), block.DestinationX, block.DestinationY);
-                    }
 
                     return rebuiltImage;
                 })));

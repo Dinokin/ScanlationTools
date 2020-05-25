@@ -3,20 +3,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using ImageMagick;
 
-namespace Dinokin.ScanlationTools.Tools
+namespace Dinokin.ScanlationTools.Functions
 {
-    public static class WebtoonJoiner
+    public static class WebtoonPageJoiner
     {
-        public static async Task<IList<MagickImage>> Join(IList<MagickImage> images, ushort imagesPerPage)
+        public static async Task<IEnumerable<MagickImage>> JoinPages(IEnumerable<MagickImage> images, ushort imagesPerPage)
         {
+            var imageArray = images.ToArray();
             var pageGroup = new List<MagickImage>();
             var finishedPages = new List<Task<MagickImage>>();
 
-            for (var i = 1; i <= images.Count; i++)
+            for (var i = 1; i <= imageArray.Length; i++)
             {
-                pageGroup.Add(images[i - 1]);
+                pageGroup.Add(imageArray[i - 1]);
 
-                if (i % imagesPerPage == 0 || i == images.Count)
+                if (i % imagesPerPage == 0 || i == imageArray.Length)
                 {
                     var pageCopy = pageGroup.ToList();
 
