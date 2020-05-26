@@ -1,21 +1,20 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Dinokin.ScanlationTools.Others;
 using ImageMagick;
 
-namespace Dinokin.ScanlationTools.Functions
+namespace Dinokin.ScanlationTools.Others
 {
-    public static class ImageDealer
+    public static class ImageIO
     {
-        public static async Task<IEnumerable<MagickImage>> FetchImages(IEnumerable<FileInfo> files) => 
-            await Task.WhenAll(files.OrderBy(file => file.Name).Where(file => ParseFormat(file.Extension) != OutputFormats.None)
+        public static async Task<IEnumerable<MagickImage>> FetchImages(IEnumerable<FileInfo> files) => await Task.WhenAll(
+            files.OrderBy(file => file.Name).Where(file => ParseFormat(file.Extension) != SelectableOutputFormats.None)
                 .Select(file => Task.Run(() => new MagickImage(file))));
         
-        public static async Task SaveImages(IEnumerable<MagickImage> images, OutputFormats format, DirectoryInfo location) =>
-            await Task.WhenAll(images.Select((image, iterator) => Task.Run(() =>
+        public static async Task SaveImages(IEnumerable<MagickImage> images, SelectableOutputFormats format, DirectoryInfo location, IProgress<ushort>? progress = null) => await Task.WhenAll(
+            images.Select((image, iterator) => Task.Run(() =>
             {
                 string fileName;
                 MagickFormat finalFormat;
@@ -34,15 +33,15 @@ namespace Dinokin.ScanlationTools.Functions
 
                 switch (format)
                 {
-                    case OutputFormats.JPG:
+                    case SelectableOutputFormats.JPG:
                         finalFormat = MagickFormat.Jpg;
                         fileName += ".jpg";
                         break;
-                    case OutputFormats.PNG:
+                    case SelectableOutputFormats.PNG:
                         finalFormat = image.ColorType == ColorType.Grayscale ? MagickFormat.Png8 : MagickFormat.Png24;
                         fileName += ".png";
                         break;
-                    case OutputFormats.PSD:
+                    case SelectableOutputFormats.PSD:
                         finalFormat = MagickFormat.Psd;
                         fileName += ".psd";
                         break;
@@ -51,15 +50,16 @@ namespace Dinokin.ScanlationTools.Functions
                 }
 
                 image.Write($"{location}{Path.DirectorySeparatorChar}{fileName}", finalFormat);
+                progress?.Report(1);
             })));
-
-        private static OutputFormats ParseFormat(string format) => format.ToLower() switch
+        
+        private static SelectableOutputFormats ParseFormat(string format) => format.ToLower() switch
         {
-            ".jpeg" => OutputFormats.JPG,
-            ".jpg" => OutputFormats.JPG,
-            ".png" => OutputFormats.PNG,
-            ".psd" => OutputFormats.PSD,
-            _ => OutputFormats.None
+            ".jpeg" => SelectableOutputFormats.JPG,
+            ".jpg" => SelectableOutputFormats.JPG,
+            ".png" => SelectableOutputFormats.PNG,
+            ".psd" => SelectableOutputFormats.PSD,
+            _ => SelectableOutputFormats.None
         };
     }
 }

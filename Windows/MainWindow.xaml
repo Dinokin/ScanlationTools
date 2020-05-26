@@ -5,27 +5,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:resx="clr-namespace:Dinokin.ScanlationTools"
         mc:Ignorable="d"
-        Title="Scanlation Tools" Height="300" Width="400"
+        Title="Scanlation Tools" Height="500" Width="500"
         ResizeMode="NoResize">
     <Grid>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Name="Functions" Header="{x:Static resx:Resources.Functions}">
+        <Menu Margin="0,0,0,442">
+            <MenuItem Header="{x:Static resx:Resources.Functions}">
                 <MenuItem Name="FunctionConvert" Header="{x:Static resx:Resources.Convert}" IsCheckable="True" Click="SelectFunction"/>
                 <MenuItem Name="FunctionResizeByPercent" Header="{x:Static resx:Resources.ResizeByPercentage}" IsCheckable="True" Click="SelectFunction"/>
                 <MenuItem Name="FunctionTransparentBorderRemover" Header="{x:Static resx:Resources.TransparentBorderRemover}" IsCheckable="True" Click="SelectFunction"/>
                 <MenuItem Name="FunctionWebtoonPageJoiner" Header="{x:Static resx:Resources.WebtoonPageJoiner}" IsCheckable="True" Click="SelectFunction"/>
             </MenuItem>
-            <MenuItem Name="Rippers" Header="{x:Static resx:Resources.Rippers}">
-                <MenuItem Name="RippersAlphapolis" Header="{x:Static resx:Resources.Alphapolis}" Click="SelectRipper"/>
+            <MenuItem Header="{x:Static resx:Resources.Rippers}">
+                <MenuItem Name="RippersAlphaPolis" Header="{x:Static resx:Resources.AlphaPolis}" Click="SelectRipper"/>
                 <MenuItem Name="RippersComicRide" Header="{x:Static resx:Resources.ComicRIDE}" Click="SelectRipper"/>
-                <MenuItem Name="RippersWebAce" Header="{x:Static resx:Resources.WebAce}" Click="SelectRipper"/>
+                <MenuItem Name="RippersYoungAceUp" Header="{x:Static resx:Resources.YoungAceUP}" Click="SelectRipper"/>
             </MenuItem>
-            <MenuItem Name="Output" Header="{x:Static resx:Resources.Output}">
+            <MenuItem Header="{x:Static resx:Resources.Output}">
                 <MenuItem Name="OutputPNG" Header="{x:Static resx:Resources.PNG}" IsCheckable="True" Click="SelectOutput"/>
                 <MenuItem Name="OutputJPG" Header="{x:Static resx:Resources.JPG}" IsCheckable="True" Click="SelectOutput"/>
                 <MenuItem Name="OutputPSD" Header="{x:Static resx:Resources.PSD}" IsCheckable="True" Click="SelectOutput"/>
             </MenuItem>
         </Menu>
-        <Label Name="FileReceiver" Content="{x:Static resx:Resources.DropFilesHere}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" AllowDrop="True" Drop="ReceiveFiles" Width="400" Margin="0,19,0,0"/>
+        <Label Name="FileReceiver" Content="{x:Static resx:Resources.DropFilesHere}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" AllowDrop="True" Drop="ReceiveFiles" Margin="0,42,0,80" Width="500"/>
+        <ProgressBar Name="ProgressBar" Margin="10,409,10,10"/>
     </Grid>
 </Window>

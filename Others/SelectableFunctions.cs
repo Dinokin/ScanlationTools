@@ -1,6 +1,6 @@
 ﻿namespace Dinokin.ScanlationTools.Others
 {
-    public enum Functions
+    public enum SelectableFunctions
     {
         None,
         Convert,

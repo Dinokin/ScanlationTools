@@ -61,11 +61,11 @@ namespace Dinokin.ScanlationTools {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alphapolis.
+        ///   Looks up a localized string similar to AlphaPolis.
         /// </summary>
-        public static string Alphapolis {
+        public static string AlphaPolis {
             get {
-                return ResourceManager.GetString("Alphapolis", resourceCulture);
+                return ResourceManager.GetString("AlphaPolis", resourceCulture);
             }
         }
         
@@ -75,6 +75,15 @@ namespace Dinokin.ScanlationTools {
         public static string BusyPleaseAwait {
             get {
                 return ResourceManager.GetString("BusyPleaseAwait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -124,6 +133,24 @@ namespace Dinokin.ScanlationTools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please insert the address to the chapter..
+        /// </summary>
+        public static string InsertAddressToChapter {
+            get {
+                return ResourceManager.GetString("InsertAddressToChapter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The URL used for this ripper is invalid..
+        /// </summary>
+        public static string InvalidUrlInserted {
+            get {
+                return ResourceManager.GetString("InvalidUrlInserted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to JPG.
         /// </summary>
         public static string JPG {
@@ -138,6 +165,15 @@ namespace Dinokin.ScanlationTools {
         public static string NoSupportedImageFormatFound {
             get {
                 return ResourceManager.GetString("NoSupportedImageFormatFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
             }
         }
         
@@ -250,20 +286,20 @@ namespace Dinokin.ScanlationTools {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Web Ace.
-        /// </summary>
-        public static string WebAce {
-            get {
-                return ResourceManager.GetString("WebAce", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Webtoon Page Joiner.
         /// </summary>
         public static string WebtoonPageJoiner {
             get {
                 return ResourceManager.GetString("WebtoonPageJoiner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Young Ace UP.
+        /// </summary>
+        public static string YoungAceUP {
+            get {
+                return ResourceManager.GetString("YoungAceUP", resourceCulture);
             }
         }
     }

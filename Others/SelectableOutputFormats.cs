@@ -1,6 +1,6 @@
 ﻿namespace Dinokin.ScanlationTools.Others
 {
-    public enum OutputFormats
+    public enum SelectableOutputFormats
     {
         None,
         PNG,

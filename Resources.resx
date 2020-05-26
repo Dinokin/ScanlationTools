@@ -65,14 +65,14 @@
     <data name="Rippers">
         <value>Rippers</value>
     </data>
-    <data name="Alphapolis">
-        <value>Alphapolis</value>
+    <data name="AlphaPolis">
+        <value>AlphaPolis</value>
     </data>
     <data name="ComicRIDE">
         <value>ComicRIDE</value>
     </data>
-    <data name="WebAce">
-        <value>Web Ace</value>
+    <data name="YoungAceUP">
+        <value>Young Ace UP</value>
     </data>
     <data name="Output">
         <value>Output</value>
@@ -85,5 +85,17 @@
     </data>
     <data name="PSD">
         <value>PSD</value>
+    </data>
+    <data name="Ok">
+        <value>Ok</value>
+    </data>
+    <data name="Cancel">
+        <value>Cancel</value>
+    </data>
+    <data name="InsertAddressToChapter">
+        <value>Please insert the address to the chapter.</value>
+    </data>
+    <data name="InvalidUrlInserted">
+        <value>The URL used for this ripper is invalid.</value>
     </data>
 </root>
