@@ -5,8 +5,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:resx="clr-namespace:Dinokin.ScanlationTools"
         mc:Ignorable="d"
-        Title="Scanlation Tools" Height="500" Width="500"
-        ResizeMode="NoResize">
+        Title="Scanlation Tools"
+        ResizeMode="NoResize"
+        Height="500" Width="500"
+        Icon="/Windows/icon.png">
     <Grid>
         <Menu Margin="0,0,0,442">
             <MenuItem Header="{x:Static resx:Resources.Functions}">

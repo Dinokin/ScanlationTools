@@ -8,6 +8,7 @@
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
+        <ApplicationIcon>icon.ico</ApplicationIcon>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -19,12 +20,20 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Windows\icon.png" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="HtmlAgilityPack" Version="1.11.23" />
       <PackageReference Include="Magick.NET-Q8-x64" Version="7.17.0.1" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.4" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.4" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
       <PackageReference Include="Ookii.Dialogs.Wpf.NETCore" Version="2.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Windows\icon.png" />
     </ItemGroup>
 
     <ItemGroup>

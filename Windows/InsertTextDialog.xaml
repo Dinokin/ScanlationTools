@@ -6,7 +6,8 @@
         xmlns:resx="clr-namespace:Dinokin.ScanlationTools"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Height="150" Width="400">
+        Height="150" Width="400"
+        Icon="/Windows/icon.png">
     <StackPanel Margin="5">
         <TextBlock Name="Message" Margin="5"/>
         <TextBox Name="Answer" Margin="5"/>
