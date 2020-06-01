@@ -9,11 +9,17 @@ namespace Dinokin.ScanlationTools.Others
 {
     public static class ImageIO
     {
-        public static async Task<IEnumerable<MagickImage>> FetchImages(IEnumerable<FileInfo> files) => await Task.WhenAll(
+        public static Task<IEnumerable<MagickImage>> FetchImages(IEnumerable<FileInfo> files, IProgress<ushort>? progressReporter = null) => Task.FromResult(
             files.OrderBy(file => file.Name).Where(file => ParseFormat(file.Extension) != SelectableOutputFormats.None)
-                .Select(file => Task.Run(() => new MagickImage(file))));
+                .Select(file => 
+                { 
+                    var image = new MagickImage(file);
+                    progressReporter?.Report(1);
+
+                    return image;
+                }));
         
-        public static async Task SaveImages(IEnumerable<MagickImage> images, SelectableOutputFormats format, DirectoryInfo location, IProgress<ushort>? progress = null) => await Task.WhenAll(
+        public static async Task SaveImages(IEnumerable<MagickImage> images, SelectableOutputFormats format, DirectoryInfo location, IProgress<ushort>? progressReporter = null) => await Task.WhenAll(
             images.Select((image, iterator) => Task.Run(() =>
             {
                 string fileName;
@@ -50,7 +56,7 @@ namespace Dinokin.ScanlationTools.Others
                 }
 
                 image.Write($"{location}{Path.DirectorySeparatorChar}{fileName}", finalFormat);
-                progress?.Report(1);
+                progressReporter?.Report(1);
             })));
         
         private static SelectableOutputFormats ParseFormat(string format) => format.ToLower() switch

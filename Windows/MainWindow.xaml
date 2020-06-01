@@ -12,10 +12,10 @@
     <Grid>
         <Menu Margin="0,0,0,442">
             <MenuItem Header="{x:Static resx:Resources.Functions}">
-                <MenuItem Name="FunctionConvert" Header="{x:Static resx:Resources.Convert}" IsCheckable="True" Click="SelectFunction"/>
-                <MenuItem Name="FunctionResizeByPercent" Header="{x:Static resx:Resources.ResizeByPercentage}" IsCheckable="True" Click="SelectFunction"/>
-                <MenuItem Name="FunctionTransparentBorderRemover" Header="{x:Static resx:Resources.TransparentBorderRemover}" IsCheckable="True" Click="SelectFunction"/>
-                <MenuItem Name="FunctionWebtoonPageJoiner" Header="{x:Static resx:Resources.WebtoonPageJoiner}" IsCheckable="True" Click="SelectFunction"/>
+                <MenuItem Name="FunctionConverter" Header="{x:Static resx:Resources.Converter}" IsCheckable="True" Click="SelectFunction"/>
+                <MenuItem Name="FunctionResizer" Header="{x:Static resx:Resources.Resizer}" IsCheckable="True" Click="SelectFunction"/>
+                <MenuItem Name="FunctionBorderRemover" Header="{x:Static resx:Resources.BorderRemover}" IsCheckable="True" Click="SelectFunction"/>
+                <MenuItem Name="FunctionPageJoiner" Header="{x:Static resx:Resources.PageJoiner}" IsCheckable="True" Click="SelectFunction"/>
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.Rippers}">
                 <MenuItem Name="RippersAlphaPolis" Header="{x:Static resx:Resources.AlphaPolis}" Click="SelectRipper"/>

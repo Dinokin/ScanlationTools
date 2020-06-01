@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Dinokin.ScanlationTools.Functions;
 using Dinokin.ScanlationTools.Interfaces;
 using Dinokin.ScanlationTools.Rippers;
 using HtmlAgilityPack;
@@ -20,6 +21,10 @@ namespace Dinokin.ScanlationTools
             services.AddTransient<IRipper, YoungAceUp>();
             services.AddTransient<IRipper, AlphaPolis>();
             services.AddTransient<IRipper, ComicRide>();
+            services.AddTransient<IFunction, Converter>();
+            services.AddTransient<IFunction, PageJoiner>();
+            services.AddTransient<IFunction, BorderRemover>();
+            services.AddTransient<IFunction, Resizer>();
 
             _services = services.BuildServiceProvider();
         }

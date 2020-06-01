@@ -70,6 +70,15 @@ namespace Dinokin.ScanlationTools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Border Remover.
+        /// </summary>
+        public static string BorderRemover {
+            get {
+                return ResourceManager.GetString("BorderRemover", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Busy. Please await..
         /// </summary>
         public static string BusyPleaseAwait {
@@ -97,11 +106,11 @@ namespace Dinokin.ScanlationTools {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Convert.
+        ///   Looks up a localized string similar to Converter.
         /// </summary>
-        public static string Convert {
+        public static string Converter {
             get {
-                return ResourceManager.GetString("Convert", resourceCulture);
+                return ResourceManager.GetString("Converter", resourceCulture);
             }
         }
         
@@ -142,11 +151,38 @@ namespace Dinokin.ScanlationTools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert the number of pages per joined page..
+        /// </summary>
+        public static string InsertNumberOfPagesPerJoinedPage {
+            get {
+                return ResourceManager.GetString("InsertNumberOfPagesPerJoinedPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert the percentage of the resize..
+        /// </summary>
+        public static string InsertResizePercentage {
+            get {
+                return ResourceManager.GetString("InsertResizePercentage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The URL used for this ripper is invalid..
         /// </summary>
         public static string InvalidUrlInserted {
             get {
                 return ResourceManager.GetString("InvalidUrlInserted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Value Inserted..
+        /// </summary>
+        public static string InvalidValueInserted {
+            get {
+                return ResourceManager.GetString("InvalidValueInserted", resourceCulture);
             }
         }
         
@@ -183,6 +219,15 @@ namespace Dinokin.ScanlationTools {
         public static string Output {
             get {
                 return ResourceManager.GetString("Output", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page Joiner.
+        /// </summary>
+        public static string PageJoiner {
+            get {
+                return ResourceManager.GetString("PageJoiner", resourceCulture);
             }
         }
         
@@ -241,11 +286,11 @@ namespace Dinokin.ScanlationTools {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resize by Percentage.
+        ///   Looks up a localized string similar to Resizer.
         /// </summary>
-        public static string ResizeByPercentage {
+        public static string Resizer {
             get {
-                return ResourceManager.GetString("ResizeByPercentage", resourceCulture);
+                return ResourceManager.GetString("Resizer", resourceCulture);
             }
         }
         
@@ -273,24 +318,6 @@ namespace Dinokin.ScanlationTools {
         public static string TaskCompletedSuccessfully {
             get {
                 return ResourceManager.GetString("TaskCompletedSuccessfully", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Transparent Border Remover.
-        /// </summary>
-        public static string TransparentBorderRemover {
-            get {
-                return ResourceManager.GetString("TransparentBorderRemover", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Webtoon Page Joiner.
-        /// </summary>
-        public static string WebtoonPageJoiner {
-            get {
-                return ResourceManager.GetString("WebtoonPageJoiner", resourceCulture);
             }
         }
         

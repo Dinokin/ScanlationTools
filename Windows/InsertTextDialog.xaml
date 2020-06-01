@@ -10,7 +10,7 @@
         Icon="/Windows/icon.png">
     <StackPanel Margin="5">
         <TextBlock Name="Message" Margin="5"/>
-        <TextBox Name="Answer" Margin="5"/>
+        <TextBox Name="Answer" Margin="5" PreviewTextInput="ProcessText"/>
         <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Right">
             <Button Content="{x:Static resx:Resources.Ok}" IsDefault="True" Margin="5" Padding="5" Click="OkButtonClick" />
             <Button Content="{x:Static resx:Resources.Cancel}" IsDefault="False" Margin="5" Padding="5" Click="CancelButtonClick" />

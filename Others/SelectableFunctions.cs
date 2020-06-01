@@ -3,9 +3,9 @@
     public enum SelectableFunctions
     {
         None,
-        Convert,
-        ResizeByPercent,
-        TransparentBorderRemover,
-        WebtoonPageJoiner
+        Converter,
+        Resizer,
+        BorderRemover,
+        PageJoiner
     }
 }

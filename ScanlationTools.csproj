@@ -9,6 +9,15 @@
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
         <ApplicationIcon>icon.ico</ApplicationIcon>
+        <IsPackable>false</IsPackable>
+        <PackageId>Scanlation Tools</PackageId>
+        <PackageVersion>2.0.0</PackageVersion>
+        <Title>Scanlation Tools</Title>
+        <Authors>Unlimited Dingo Works</Authors>
+        <Company>Unlimited Dingo Works</Company>
+        <Product>Scanlation Tools</Product>
+        <AssemblyVersion>2.0.0</AssemblyVersion>
+        <FileVersion>2.0.0</FileVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

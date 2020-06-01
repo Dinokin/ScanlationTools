@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Dinokin.ScanlationTools.Windows
 {
@@ -9,15 +12,18 @@ namespace Dinokin.ScanlationTools.Windows
     {
         public string? Input { get; private set; }
 
-        public InsertTextDialog(string windowTitle, string message)
+        private bool _onlyNumbers;
+        
+        public InsertTextDialog(string windowTitle, string message, bool onlyNumbers = false)
         {
             InitializeComponent();
 
             Title = windowTitle;
             Message.Text = message;
+            _onlyNumbers = onlyNumbers;
         }
 
-        private void OkButtonClick(object sender, RoutedEventArgs routedEventArgs)
+        private void OkButtonClick(object sender, RoutedEventArgs routeProcessText)
         {
             Input = Answer.Text;
 
@@ -25,5 +31,15 @@ namespace Dinokin.ScanlationTools.Windows
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs routedEventArgs) => Close();
+
+        private void ProcessText(object sender, TextCompositionEventArgs textCompositionEventArgs) => textCompositionEventArgs.Handled = !IsValidInput(textCompositionEventArgs.Text);
+        
+        private bool IsValidInput(string text)
+        {
+            if (!_onlyNumbers)
+                return true;
+
+            return Regex.IsMatch(text, "[0-9]+");
+        }
     }
 }

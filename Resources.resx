@@ -44,17 +44,17 @@
     <data name="Functions">
         <value>Functions</value>
     </data>
-    <data name="Convert">
-        <value>Convert</value>
+    <data name="Converter">
+        <value>Converter</value>
     </data>
-    <data name="ResizeByPercentage">
-        <value>Resize by Percentage</value>
+    <data name="Resizer">
+        <value>Resizer</value>
     </data>
-    <data name="TransparentBorderRemover">
-        <value>Transparent Border Remover</value>
+    <data name="BorderRemover">
+        <value>Border Remover</value>
     </data>
-    <data name="WebtoonPageJoiner">
-        <value>Webtoon Page Joiner</value>
+    <data name="PageJoiner">
+        <value>Page Joiner</value>
     </data>
     <data name="PleaseWait">
         <value>Please Wait...</value>
@@ -97,5 +97,14 @@
     </data>
     <data name="InvalidUrlInserted">
         <value>The URL used for this ripper is invalid.</value>
+    </data>
+    <data name="InvalidValueInserted">
+        <value>Invalid Value Inserted.</value>
+    </data>
+    <data name="InsertResizePercentage">
+        <value>Insert the percentage of the resize.</value>
+    </data>
+    <data name="InsertNumberOfPagesPerJoinedPage">
+        <value>Insert the number of pages per joined page.</value>
     </data>
 </root>
