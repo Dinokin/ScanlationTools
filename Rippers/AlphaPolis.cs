@@ -36,6 +36,6 @@ namespace Dinokin.ScanlationTools.Rippers
                 return new Uri($"{match.Value.Substring(startIndex, length)}1080x1536.jpg");
             });
 
-        public bool IsValidURI(Uri address) => Regex.IsMatch(address.AbsoluteUri, "^https://www.alphapolis.co.jp/manga/official/[0-9]{9}/[0-9]{1,4}$");
+        public bool IsValidURI(Uri address) => Regex.IsMatch(address.AbsoluteUri, @"^https:\/\/www\.alphapolis\.co\.jp\/manga\/official\/[0-9]{9}\/[0-9]{1,4}$");
     }
 }

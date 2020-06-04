@@ -21,6 +21,7 @@
                 <MenuItem Name="RippersAlphaPolis" Header="{x:Static resx:Resources.AlphaPolis}" Click="SelectRipper"/>
                 <MenuItem Name="RippersComicRide" Header="{x:Static resx:Resources.ComicRIDE}" Click="SelectRipper"/>
                 <MenuItem Name="RippersYoungAceUp" Header="{x:Static resx:Resources.YoungAceUP}" Click="SelectRipper"/>
+                <MenuItem Name="RippersComicBorder" Header="{x:Static resx:Resources.ComicBorder}" Click="SelectRipper"/>
             </MenuItem>
             <MenuItem Header="{x:Static resx:Resources.Output}">
                 <MenuItem Name="OutputPNG" Header="{x:Static resx:Resources.PNG}" IsCheckable="True" Click="SelectOutput"/>

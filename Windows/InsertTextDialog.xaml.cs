@@ -39,7 +39,7 @@ namespace Dinokin.ScanlationTools.Windows
             if (!_onlyNumbers)
                 return true;
 
-            return Regex.IsMatch(text, "[0-9]+");
+            return Regex.IsMatch(text, @"[0-9]+");
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Dinokin.ScanlationTools
             services.AddTransient<IRipper, YoungAceUp>();
             services.AddTransient<IRipper, AlphaPolis>();
             services.AddTransient<IRipper, ComicRide>();
+            services.AddTransient<IRipper, ComicBorder>();
             services.AddTransient<IFunction, Converter>();
             services.AddTransient<IFunction, PageJoiner>();
             services.AddTransient<IFunction, BorderRemover>();

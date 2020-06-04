@@ -107,4 +107,7 @@
     <data name="InsertNumberOfPagesPerJoinedPage">
         <value>Insert the number of pages per joined page.</value>
     </data>
+    <data name="ComicBorder">
+        <value>Comic Border</value>
+    </data>
 </root>

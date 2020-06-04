@@ -97,6 +97,15 @@ namespace Dinokin.ScanlationTools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comic Border.
+        /// </summary>
+        public static string ComicBorder {
+            get {
+                return ResourceManager.GetString("ComicBorder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ComicRIDE.
         /// </summary>
         public static string ComicRIDE {

@@ -86,17 +86,26 @@ namespace Dinokin.ScanlationTools.Windows
                 case "RippersAlphaPolis":
                     RippersComicRide.IsChecked = false;
                     RippersYoungAceUp.IsChecked = false;
+                    RippersComicBorder.IsChecked = false;
                     RunRipper("AlphaPolis");
                     break;
                 case "RippersComicRide":
                     RippersAlphaPolis.IsChecked = false;
                     RippersYoungAceUp.IsChecked = false;
+                    RippersComicBorder.IsChecked = false;
                     RunRipper("ComicRIDE");
                     break; 
                 case "RippersYoungAceUp": 
                     RippersAlphaPolis.IsChecked = false;
                     RippersComicRide.IsChecked = false;
+                    RippersComicBorder.IsChecked = false;
                     RunRipper("Young Ace UP");
+                    break;
+                case "RippersComicBorder":
+                    RippersAlphaPolis.IsChecked = false;
+                    RippersComicRide.IsChecked = false;
+                    RippersYoungAceUp.IsChecked = false;
+                    RunRipper("Comic Border");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(menuItem.Name), menuItem.Name, null);

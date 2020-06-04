@@ -37,6 +37,6 @@ namespace Dinokin.ScanlationTools.Rippers
                     return uri;
                 });
 
-        public bool IsValidURI(Uri address) => Regex.IsMatch(address.AbsoluteUri, "^https://web-ace.jp/youngaceup/contents/1000[0-9]{3}/episode/[0-9]{1,4}/$");
+        public bool IsValidURI(Uri address) => Regex.IsMatch(address.AbsoluteUri, @"^https:\/\/web-ace\.jp\/youngaceup\/contents\/1000[0-9]{3}\/episode\/[0-9]{1,4}\/$");
     }
 }
