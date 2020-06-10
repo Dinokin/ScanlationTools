@@ -18,11 +18,10 @@ namespace Dinokin.ScanlationTools.Functions
                 {
                     var tasks = new Task[2];
                     var pixels = image.GetPixels();
-                    Pixel? firstPixelX = null;
-                    Pixel? lastPixelX = null;
-                    Pixel? firstPixelY = null;
-                    Pixel? lastPixelY = null;
-
+                    IPixel<byte>? firstPixelX = null;
+                    IPixel<byte>? lastPixelX = null;
+                    IPixel<byte>? firstPixelY = null;
+                    IPixel<byte>? lastPixelY = null;
 
                     foreach (var pixel in pixels)
                     {
