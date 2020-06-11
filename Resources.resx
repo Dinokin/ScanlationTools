@@ -110,4 +110,16 @@
     <data name="ComicBorder">
         <value>Comic Border</value>
     </data>
+    <data name="SeigaNiconico">
+        <value>Seiga Niconico</value>
+    </data>
+    <data name="InvalidCredentialsInserted">
+        <value>The credentials are not valid..</value>
+    </data>
+    <data name="InsertYourUser">
+        <value>Insert your user.</value>
+    </data>
+    <data name="InsertYourPassword">
+        <value>Insert your password.</value>
+    </data>
 </root>

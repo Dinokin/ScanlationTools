@@ -16,8 +16,8 @@
         <Authors>Unlimited Dingo Works</Authors>
         <Company>Unlimited Dingo Works</Company>
         <Product>Scanlation Tools</Product>
-        <AssemblyVersion>2.1.0</AssemblyVersion>
-        <FileVersion>2.1.0</FileVersion>
+        <AssemblyVersion>2.2.0</AssemblyVersion>
+        <FileVersion>2.2.0</FileVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

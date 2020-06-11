@@ -87,25 +87,43 @@ namespace Dinokin.ScanlationTools.Windows
                     RippersComicRide.IsChecked = false;
                     RippersYoungAceUp.IsChecked = false;
                     RippersComicBorder.IsChecked = false;
+                    RippersYoungAceUp.IsChecked = false;
+                    RippersSeigaNiconico.IsChecked = false;
                     RunRipper("AlphaPolis");
                     break;
                 case "RippersComicRide":
                     RippersAlphaPolis.IsChecked = false;
                     RippersYoungAceUp.IsChecked = false;
                     RippersComicBorder.IsChecked = false;
+                    RippersYoungAceUp.IsChecked = false;
+                    RippersSeigaNiconico.IsChecked = false;
+
                     RunRipper("ComicRIDE");
                     break; 
                 case "RippersYoungAceUp": 
                     RippersAlphaPolis.IsChecked = false;
                     RippersComicRide.IsChecked = false;
                     RippersComicBorder.IsChecked = false;
+                    RippersYoungAceUp.IsChecked = false;
+                    RippersSeigaNiconico.IsChecked = false;
+
                     RunRipper("Young Ace UP");
                     break;
                 case "RippersComicBorder":
                     RippersAlphaPolis.IsChecked = false;
                     RippersComicRide.IsChecked = false;
                     RippersYoungAceUp.IsChecked = false;
+                    RippersYoungAceUp.IsChecked = false;
+                    RippersSeigaNiconico.IsChecked = false;
                     RunRipper("Comic Border");
+                    break;
+                case "RippersSeigaNiconico":
+                    RippersAlphaPolis.IsChecked = false;
+                    RippersComicRide.IsChecked = false;
+                    RippersYoungAceUp.IsChecked = false;
+                    RippersComicBorder.IsChecked = false;
+                    RippersYoungAceUp.IsChecked = false;
+                    RunRipper("Seiga Niconico");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(menuItem.Name), menuItem.Name, null);
@@ -256,6 +274,24 @@ namespace Dinokin.ScanlationTools.Windows
                 MessageBox.Show(ScanlationTools.Resources.InvalidUrlInserted, ScanlationTools.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
                 
                 return;
+            }
+
+            if (ripper is IAuthenticatedRipper authenticatedRipper)
+            {
+                var user = new InsertTextDialog(ripperName, ScanlationTools.Resources.InsertYourUser);
+                var password = new InsertTextDialog(ripperName, ScanlationTools.Resources.InsertYourPassword);
+
+                user.ShowDialog();
+                password.ShowDialog();
+
+                if (string.IsNullOrWhiteSpace(user.Input) || string.IsNullOrWhiteSpace(password.Input))
+                {
+                    MessageBox.Show(ScanlationTools.Resources.InvalidCredentialsInserted, ScanlationTools.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                
+                    return;
+                }
+                
+                await authenticatedRipper.Authenticate(user.Input, password.Input);
             }
             
             var folderDialog = new VistaFolderBrowserDialog { ShowNewFolderButton = true};

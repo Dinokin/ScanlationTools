@@ -178,6 +178,33 @@ namespace Dinokin.ScanlationTools {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert your password..
+        /// </summary>
+        public static string InsertYourPassword {
+            get {
+                return ResourceManager.GetString("InsertYourPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert your user..
+        /// </summary>
+        public static string InsertYourUser {
+            get {
+                return ResourceManager.GetString("InsertYourUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The credentials are not valid...
+        /// </summary>
+        public static string InvalidCredentialsInserted {
+            get {
+                return ResourceManager.GetString("InvalidCredentialsInserted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The URL used for this ripper is invalid..
         /// </summary>
         public static string InvalidUrlInserted {
@@ -309,6 +336,15 @@ namespace Dinokin.ScanlationTools {
         public static string Rippers {
             get {
                 return ResourceManager.GetString("Rippers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seiga Niconico.
+        /// </summary>
+        public static string SeigaNiconico {
+            get {
+                return ResourceManager.GetString("SeigaNiconico", resourceCulture);
             }
         }
         
